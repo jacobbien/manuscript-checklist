@@ -4,7 +4,7 @@
 \bibliographystyle{agsm}
 
 \usepackage{fancyvrb} % for "\Verb" macro
-\usepackage{enumitem,amssymb}
+\usepackage{enumitem}
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
 
@@ -44,7 +44,17 @@
 \maketitle
 
 \begin{quote}
-{\em When you're preparing a manuscript for submission to a journal, the journal will often have a list of stylistic guidelines that you must follow.  However, much before you’re ready to submit to a journal, you will be preparing a manuscript for me to read and give feedback on.  Before you send me your manuscript, I would ask that you please start by making sure that your manuscript adheres to the following guidelines.  Some of these items may seem obvious to you while others may seem less obvious.  I assembled this list based on many years of editing student manuscripts.}
+{\em When you're preparing a manuscript for submission to a journal,
+  the journal will often have a list of stylistic guidelines that you
+  must follow.  However, much before you're ready to submit to a
+  journal, you will be preparing a manuscript for me to read and give
+  feedback on.  Before you send me your manuscript, I would ask that
+  you please start by making sure that your manuscript adheres to the
+  following guidelines.  Some of these items may seem obvious to you
+  while others may seem less obvious.  I assembled this list based on
+  many years of editing student manuscripts.  Some of these guidelines
+are not universally agreed upon conventions; however, consistency is
+key, so having explicit defaults for our group is helpful.}
 \end{quote}
 
 \begin{todolist}
@@ -55,7 +65,7 @@
     would be ``My Wonderful Title''\footnote{A nice tool for understanding
     the conventions for capitalization in titles is
     \url{https://titlecaseconverter.com/}. I recommend checking the
-    ``Show Explanations'' option.} and "My wonderful title."  I am ok with
+    ``Show Explanations'' option.} and ``My wonderful title.''  I am ok with
     either of these conventions as long as you are consistent
     throughout the paper.
   \item Is it ``dataset'' or ``data set?''  I'm fine with either but
@@ -77,9 +87,15 @@ Notice the difference in capitalization when you write ``in the next section'' v
 \item Treat mathematical expressions as part of the sentence.  Example: ``I like
   $\pi r^2.$''  Notice that you could replace the expression with a
   word like ``food,'' and it would make sense.
-\item After a display equation you should almost always have either a period or a comma.  As in, ``My favorite model is $$y\sim N(X\beta, \sigma^2I_n)."$$
+\item After a display equation you should almost always have either a period or a comma.  As in, ``My favorite model is
+\[
+y\sim N(X\beta, \sigma^2I_n).
+\]''
 Right before a display equation, you would only use a colon if it is
-ending a complete sentence. So you wouldn't say, ``We write this as:'' since that's not a full sentence. But you could say, ``We write this as follows:''  An alternative would be to write, ``We write this as'' without any comma.
+ending a complete sentence. So you wouldn't say, ``We write this as:''
+since that's not a full sentence. But you could say, ``We write this
+as follows:''  An alternative would be to write, ``We write this as''
+without any colon.
 \item Don't start sentences with mathematical notation.  So instead of
   writing, ``$\Sigma$ is a Toeplitz matrix,'' you would find some
   other way to word it.  For example, you could write, ``The matrix
@@ -111,15 +127,21 @@ allows you to write $\mathcal X^{(k)}$ with the command \verb+$\xsup{k}$+.
   line of text).  The reason this matters is that the result will look
   different ($p$ versus p).
 \item For inner products, use \verb+$\langle x, y\rangle$+ rather than
-  \verb+$<x, y>$+. This will results in $\langle x, y\rangle$ rather
+  \verb+$<x, y>$+. This will result in $\langle x, y\rangle$ rather
   than $<x, y>$.
 \item For ``much greater than,'' use \verb+$p \gg n$+ rather than
   \verb+$p >> n$+ (this will result in $p \gg n$ rather than $p >>
-  n$).  And likewise, use \verb+$\ll$+ for “much smaller than.”
-\item For norms, use \verb+$\|$+ rather than \verb+$||$+.  The results
-  are different: $\|x\|$ versus $||x||$.ma
-  \item Use \verb+\left+ and \verb+\right+ whenever using parentheses,
-    curly braces, etc.  This will resize them as appropriate for the context.
+  n$).  And likewise, use \verb+$\ll$+ for ``much smaller than.''
+\item For norms, use \verb+$\|$+ rather than \verb+$||$+.  The result
+  is different: $\|x\|$ versus $||x||$.
+\item For conditional expectations and probabilities, use \verb+$\mid$+
+  rather than \verb+$|$+ for the conditioning bar, as in
+  \verb+$p(y \mid x)$+ rather than \verb+$p(y|x)$+.  This gives better
+  spacing around the bar: $p(y \mid x)$ versus $p(y|x)$.
+  \item Use \verb+\left+ and \verb+\right+ when parentheses,
+    curly braces, etc.\ need to resize to match tall contents.
+    For more fine-grained control over the sizing, you
+    can use \verb+\big(+, \verb+\Big(+, \verb+\bigg(+, \verb+\Bigg(+, etc.
     \item Refer to equations either as ``Equation 12'' or ``(12),'' but
       not as ``Equation (12).''  Use \verb+\eqref{}+ for references of
       the form ``(12).''
@@ -127,13 +149,13 @@ allows you to write $\mathcal X^{(k)}$ with the command \verb+$\xsup{k}$+.
 \item Citations
   \begin{todolist}
 \item Use \verb+\citep{}+ for a parenthetical and \verb+\citet{}+ for a noun.
-    Examples: (a) ``The lasso \verb+\citep{tibs96}+ uses an L1 penalty." (b)
-    "\verb+\citet{tibs96}+ shows that..."  One places a citation in
+    Examples: (a) ``The lasso \verb+\citep{tibs96}+ uses an $\ell_1$ penalty.'' (b)
+    ``\verb+\citet{tibs96}+ shows that...''  One places a citation in
     parentheses as in (a) when you could read the sentence without the
     citation and it would still make sense.  This is not true in (b),
     where the citation is the subject of the sentence.
 \item Be sure that you don't have double parentheses.  To do so, you can use
-    \verb+\citealt{}+.  Example: "The lasso (see, e.g., \verb+\citealt{ESL}+) is..."
+    \verb+\citealt{}+.  Example: ``The lasso (see, e.g., \verb+\citealt{ESL}+) is...''
   \end{todolist}
 \item Common sense things
   \begin{todolist}
@@ -195,6 +217,6 @@ allows you to write $\mathcal X^{(k)}$ with the command \verb+$\xsup{k}$+.
  
 \end{todolist}
 
-{\em Thanks to Daniela Witten for contributing some of these!}
+{\em Thanks to Daniela Witten and Louis Christie for contributing some of these!}
 
 \end{document}
