@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,amsmath, amsfonts, amssymb, amsthm, natbib}
+\usepackage{graphicx, algorithmic, algorithm, enumerate, hyperref, color}
+\bibliographystyle{agsm}
+
+\usepackage{fancyvrb} % for "\Verb" macro
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\def\real{{\mathbb R}}
+\def\st{\text{ s.t. }}
+\def\diag{\mathbf{diag}}
+\def\half{\frac{1}{2}}
+\def\bin{\mathrm{Binomial}}
+\def\po{\mathrm{Poisson}}
+\def\var{\mathrm{Var}}
+\def\E{\mathbb{E}}
+\def\X{{\bf X}}
+\def\XX{\mathcal X}
+\def\W{{\bf W}}
+\def\Z{{\bf Z}}
+\def\U{{\bf U}}
+\def\V{{\bf V}}
+\def\I{{\bf I}}
+\def\ones{{\bf 1}}
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\renewcommand{\P}{\mathbb P}
+
+\newcommand{\reviewer}[1]{{\noindent\bf\color{blue}#1}}
+
+\newtheorem{claim}{Claim}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{ass}{Assumption}
+
+\title{A Checklist for Preparing Your Manuscript}
+\author{Jacob Bien}
+\date{(Last modified: \today)}
+\begin{document}
+\maketitle
+
+\begin{quote}
+{\em When you're preparing a manuscript for submission to a journal, the journal will often have a list of stylistic guidelines that you must follow.  However, much before you’re ready to submit to a journal, you will be preparing a manuscript for me to read and give feedback on.  Before you send me your manuscript, I would ask that you please start by making sure that your manuscript adheres to the following guidelines.  Some of these items may seem obvious to you while others may seem less obvious.  I assembled this list based on many years of editing student manuscripts.}
+\end{quote}
+
+\begin{todolist}
+\item Being consistent
+  \begin{todolist}
+  \item Do all titles, section titles, and subsection titles have a
+    consistent choice of how to capitalize?  The two standard choices
+    would be ``My Wonderful Title''\footnote{A nice tool for understanding
+    the conventions for capitalization in titles is
+    \url{https://titlecaseconverter.com/}. I recommend checking the
+    ``Show Explanations'' option.} and "My wonderful title."  I am ok with
+    either of these conventions as long as you are consistent
+    throughout the paper.
+  \item Is it ``dataset'' or ``data set?''  I'm fine with either but
+    it's important to be consistent through the paper.
+    \item Are you using present tense or past tense in your simulation
+      study and data analysis sections?  Whichever tense you choose,
+      use it consistently.  
+  \end{todolist}
+\item Capitalization
+  \begin{todolist}
+  \item Terminology is all lower case unless it is based on someone's
+    name.  So ``elastic net'' (not ``Elastic Net'') but ``Wasserstein
+    distance'' and ``Gaussian process.''
+    \item 
+Notice the difference in capitalization when you write ``in the next section'' versus ``in Section 3.''  Likewise you could say, ``in the appendix, we show...'' whereas you would write ``in Appendix A, we show....''  The same goes with theorems and figures.
+  \end{todolist}
+\item Latex equations
+  \begin{todolist}
+\item Treat mathematical expressions as part of the sentence.  Example: ``I like
+  $\pi r^2.$''  Notice that you could replace the expression with a
+  word like ``food,'' and it would make sense.
+\item After a display equation you should almost always have either a period or a comma.  As in, ``My favorite model is $$y\sim N(X\beta, \sigma^2I_n)."$$
+Right before a display equation, you would only use a colon if it is
+ending a complete sentence. So you wouldn't say, ``We write this as:'' since that's not a full sentence. But you could say, ``We write this as follows:''  An alternative would be to write, ``We write this as'' without any comma.
+\item Don't start sentences with mathematical notation.  So instead of
+  writing, ``$\Sigma$ is a Toeplitz matrix,'' you would find some
+  other way to word it.  For example, you could write, ``The matrix
+  $\Sigma$ is Toeplitz.''
+\item Define macros whenever you are using the same bit of bulky
+  notation repeatedly (e.g. $\mathcal X^{\text{train}}$)---it will save trouble
+  in the long run.  Adding 
+
+\begin{verbatim}
+\newcommand{\xtr}{\mathcal X^{\text{train}}}
+\end{verbatim}
+in the macros section of your tex file makes it so that you only need to write
+\verb+$\xtr$+ each time.  Macros can even take arguments.  For example,
+the macro
+
+\begin{verbatim}
+\newcommand{\xsup}[1]{\mathcal X^{(#1)}}
+\end{verbatim}
+
+allows you to write $\mathcal X^{(k)}$ with the command \verb+$\xsup{k}$+.
+
+
+  
+\item Use \verb+$\mathrm{diag}$+ rather than \verb+$diag$+ (and
+  likewise for other words).
+  \item Use \verb+$\log$+ rather than \verb+$log$+.
+\item Be sure to write \verb+$p$+ rather than just \verb+p+ in text (and likewise
+  for other cases where a single-letter variable name appears within a
+  line of text).  The reason this matters is that the result will look
+  different ($p$ versus p).
+\item For inner products, use \verb+$\langle x, y\rangle$+ rather than
+  \verb+$<x, y>$+. This will results in $\langle x, y\rangle$ rather
+  than $<x, y>$.
+\item For ``much greater than,'' use \verb+$p \gg n$+ rather than
+  \verb+$p >> n$+ (this will result in $p \gg n$ rather than $p >>
+  n$).  And likewise, use \verb+$\ll$+ for “much smaller than.”
+\item For norms, use \verb+$\|$+ rather than \verb+$||$+.  The results
+  are different: $\|x\|$ versus $||x||$.ma
+  \item Use \verb+\left+ and \verb+\right+ whenever using parentheses,
+    curly braces, etc.  This will resize them as appropriate for the context.
+    \item Refer to equations either as ``Equation 12'' or ``(12),'' but
+      not as ``Equation (12).''  Use \verb+\eqref{}+ for references of
+      the form ``(12).''
+  \end{todolist}
+\item Citations
+  \begin{todolist}
+\item Use \verb+\citep{}+ for a parenthetical and \verb+\citet{}+ for a noun.
+    Examples: (a) ``The lasso \verb+\citep{tibs96}+ uses an L1 penalty." (b)
+    "\verb+\citet{tibs96}+ shows that..."  One places a citation in
+    parentheses as in (a) when you could read the sentence without the
+    citation and it would still make sense.  This is not true in (b),
+    where the citation is the subject of the sentence.
+\item Be sure that you don't have double parentheses.  To do so, you can use
+    \verb+\citealt{}+.  Example: "The lasso (see, e.g., \verb+\citealt{ESL}+) is..."
+  \end{todolist}
+\item Common sense things
+  \begin{todolist}
+\item Is every sentence grammatically correct?
+\item Are all words spelled correctly?
+  \end{todolist}
+\item Logical flow
+  \begin{todolist}
+    \item When a sentence refers to something as if it has already been introduced to the reader, has this thing actually already been introduced to the reader? [The only way I know to figure this out is to read your writing from the very start to the very end.  And as you're reading, pretend you're someone who is reading this paper for the first time.]
+\item Whenever referring to a piece of notation or a fact that was used more than, say, two paragraphs ago, provide an equation number or section reference for where this notation or fact was presented.  E.g. ``since $a+b=c$ (see Theorem 2)'' or ``Recall the definition of $W$ from Section 2.''
+\item Prepare the reader for a theorem before presenting it (and likewise propositions and similar).  Also, sections should rarely end with a theorem; rather, they should end with some text either explaining something about the theorem or transitioning the focus to the next section.
+\item Any technical claim should have an explanation.  This can be a reference to a past equation, a citation to an external reference, or a reason (if the reason can't fit in a sentence or two then the technical claim should be its own result, with proof in appendix).
+  \end{todolist}
+\item Plagiarism:  All writing must be your own.  There should
+  absolutely never be verbatim (i.e., word-for-word) phrases taken
+  from another reference unless you put them in quotes with
+  attribution.  This is an academic integrity issue, and it is
+  problematic even to copy phrases from your {\bf own} writing (this
+  is called self-plagiarism).  I have seen this come up a surprising
+  number of times in statistics papers (even published ones!), especially in the context of
+  describing data sets and describing related work.  If you need to describe a data set or someone
+  else's method, I would suggest the following process:  Read what
+  they wrote and then wait some time (maybe a day?) and then write the
+  description yourself {\em without looking at the original text}.
+  This will make it more likely that you are describing the idea in
+  your own words.  If there are a lot of details that are hard for you
+  to remember without looking back at the source, this may indicate
+  that you should instead be referring the reader to read the
+  description in that paper.  Or if you really do need the details in
+  your own paper, that might be a situation where a direct quote with
+  attribution is appropriate.
+  \item Structure of tex files: We will usually be submitting a
+    version of the manuscript to a journal and also to arxiv.  The
+    journal version will normally be based on a latex template from
+    the journal (including a journal style file) whereas the arxiv
+    version should not have any journal-specific formatting.  This
+    means that we will need two different tex files, {\tt main-journalname.tex}
+    and {\tt main-arxiv.tex}.  However, keeping two different copies
+    of the content can lead to confusion (e.g., if you are editing one
+    of these and a coauthor is editing the other).  To avoid this
+    situation, I recommend creating a third file called {\tt
+      main-content.tex}.  This file contains the content that is
+    shared by both versions.  Then,  {\tt main-journalname.tex}
+    and {\tt main-arxiv.tex} will not directly include the content but
+    instead will have a line \verb+\input{main-content}+ in each.
+    This will also be useful when journals require you to submit both
+    a version with author names and an anonymized version.
+    Here's a more involved description of how I structure files when
+    there's a supplement (that should appear in two separate files for
+    the journal but in one file for arxiv):
+    \begin{itemize}
+    \item {\tt main-content.tex} has all the content of the main
+      paper excluding the header stuff.
+    \item {\tt supp-content.tex} has all the content of the supplement excluding the header stuff.
+\item  {\tt main-journalname.tex} has the journal-specific header and then uses \verb+\input{main-content}+
+\item  {\tt supp-journalname.tex} has the journal-specific header and then uses \verb+\input{supp-content}+
+\item  {\tt main-arxiv.tex} excludes journal-specific header and then uses \verb+\input{main-content}+ and \verb+\input{supp-content}+ so that the main paper and supplement appear in a single pdf
+    \end{itemize}
+ 
+\end{todolist}
+
+{\em Thanks to Daniela Witten for contributing some of these!}
+
+\end{document}
